@@ -136,7 +136,9 @@ Sound good? Ready to begin?
 
 ---
 
-### Step 2: Get to Know Them (ONE Holistic Question)
+### Step 2: Get to Know Them (Two-Part Question Flow)
+
+#### Step 2a: Warm-Up Question - Who They Are
 
 **Ask about them as a person - name, career, family, goals:**
 
@@ -146,10 +148,11 @@ To set up the system and assist you properly, I need to know a bit about you.
 Tell me about yourself - your name, what you do, family situation, and what you're working toward.
 
 For example:
-- "I'm John, a software engineer, married with two kids. I'm trying to grow my freelance business while staying healthy and being present with family."
-- "I'm Sarah, running a small consulting firm, single, focused on scaling my business and learning new skills."
+- "I'm John, a software engineer, married with two kids. I'm trying to grow my freelance business while staying healthy and being present with family. The website for my freelance busines is www.example.com. I'm also trying to get healthier and lower my stress levels."
 
-Just share whatever feels relevant - 3-5 sentences is perfect!
+- "I'm Sarah, running a small consulting firm, single, focused on scaling my business and learning new skills. I usually have a lot of things going on and I'm trying to get things more organized, create repeatable systems for my business, so that I can spend more time enjoying nature and the outdoors on mini vacations throughout the year."
+
+Just share whatever feels relevant - the more you can share the better context I will have.
 ```
 
 **Wait for their response.**
@@ -161,15 +164,55 @@ Just share whatever feels relevant - 3-5 sentences is perfect!
 - Goals and what they're working toward
 - Priorities and focus areas
 
-**This becomes the foundation for:**
-- Creating Assisting-User-Context.md
-- Determining their priorities
-- Personalizing future interactions
-- Understanding what's "high priority" for them
-
 **Also update vault-config.json with their name:**
 
 Read `.claude/vault-config.json`, update `userName` field with their name, write back.
+
+---
+
+#### Step 2b: Work Style and Schedule - How They Work
+
+**Now ask about their work style, schedule, and preferences:**
+
+```
+Great! Now let me understand how you like to work so I can assist you better.
+
+Tell me about your typical schedule and work preferences:
+
+- What's your normal work schedule? (days per week, typical hours)
+- Do you have regular breaks? (lunch time, other breaks)
+- How do you prefer to interact with an assistant?
+  - Quick, direct suggestions?
+  - Detailed explanations?
+  - Questions to help you think through decisions?
+- Any other preferences about how you like to work?
+  - Deep focus blocks vs. task switching?
+  - Morning vs. evening productivity?
+  - Prefer structured plans or flexible lists?
+
+For example:
+- "I work Monday-Friday, 9-5 with lunch at noon. I prefer quick, actionable suggestions. I do my best work in the morning with 2-hour focus blocks."
+- "I work irregular hours across 7 days, usually 6-8 hour days. I like detailed explanations so I understand the 'why'. I'm a night owl and prefer flexible lists over rigid schedules."
+
+Share whatever helps me understand your rhythm and preferences!
+```
+
+**Wait for their response.**
+
+**Extract from their response:**
+- Work days and hours
+- Break times (lunch, etc.)
+- Communication preferences (quick/detailed, directive/collaborative)
+- Energy patterns (morning/evening, focus blocks/task switching)
+- Planning preferences (structured/flexible)
+- Any other work style details
+
+**This becomes the foundation for:**
+- Creating Assisting-User-Context.md (includes work style section)
+- Daily planning adaptations (respecting their schedule)
+- Communication style adjustments
+- Understanding when they're available/focused
+- Personalizing future interactions
 
 ---
 
@@ -181,14 +224,40 @@ Read `.claude/vault-config.json`, update `userName` field with their name, write
 
 **Note:** Use the vault folder name detected in Step 0. Throughout all remaining steps, use `{{VaultFolder}}/` instead of hardcoding "ObsidianVault/".
 
-**Fill out:**
-- **Summary:** One-sentence synthesis of their primary focus
-- **Current Focus:** Extract goals and priorities from Step 2 response
-- **Identity/Roles:** Synthesize from what they shared (name, career, family)
-- **Why It Matters:** How this context helps with prioritization
-- **Assistant Behavior:** Standard guidance about ADHD-friendly editing, prioritization, checking goals for priority determination
+**Use the User Context template:** `{{VaultFolder}}/Templates/User Context.md`
+
+**Fill out from Step 2a and 2b responses:**
+
+**From Step 2a (Who They Are):**
+- Name, role, family situation
+- One-sentence summary of their primary focus
+- 6-month, 3-month, 1-month goals (extract from what they shared)
+
+**From Step 2b (Work Style):**
+- Work schedule (days, hours, breaks)
+- Energy patterns (peak productivity, low energy times, focus style)
+- Planning preferences (structured vs flexible)
+- Communication preferences (quick/detailed, directive/collaborative)
+- Assistant behavior guidelines
+
+**Structure to create:**
+1. Main hub file: `Assisting-User-Context.md` with all the above
+2. **Do NOT create Work Context files yet** - those will be created as needed when user sets up businesses/projects
 
 **Don't show them the file contents** - just confirm it was created.
+
+**Inform user:**
+```
+✅ Created your personal context file!
+
+This helps me:
+- Respect your schedule when planning
+- Align suggestions with your goals
+- Match your communication preferences
+- Understand what's "high priority" for you
+
+(You can review/update it anytime at: Permanent Notes/Assisting-User-Context.md)
+```
 
 ---
 
