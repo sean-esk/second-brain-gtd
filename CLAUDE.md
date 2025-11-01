@@ -388,10 +388,57 @@ Commands should **adapt to the user's setup**, not impose generic structures.
 
 ---
 
+## Documentation
+
+The system includes two main documentation files:
+
+### README.md
+**Purpose:** System overview and usage documentation for developers
+**Audience:** Users who already have prerequisites installed
+**Contents:**
+- Quick project overview
+- Streamlined quick start (assumes prerequisites installed)
+- Core workflow and commands
+- Customization options
+- Usage troubleshooting
+
+**When to use:** For understanding what the system does and how to use it after setup is complete.
+
+### SETUP-GUIDE.md
+**Purpose:** Complete beginner installation guide from zero to working system
+**Audience:** Users starting from scratch (no Git, Node.js, or Claude Code installed)
+**Contents:**
+- Prerequisites overview
+- System requirements
+- Step-by-step installation (VS Code, Git, Node.js, Claude Code, Obsidian)
+- Platform-specific instructions
+- Verification steps
+- Optional sync setup
+- Installation troubleshooting
+
+**When to use:** For first-time installation or when helping users who need to set up prerequisites.
+
+### Maintenance Guidelines
+
+**When updating installation procedures:**
+1. Update SETUP-GUIDE.md with detailed installation changes
+2. Update README.md prerequisites section if requirements change
+3. Keep both files in sync for version numbers and dates
+4. Test the full setup flow on a clean machine if possible
+
+**When updating usage workflows:**
+1. Update README.md with usage changes
+2. Update this CLAUDE.md file if commands change
+3. Keep First Week Guide in vault synchronized
+
+**Principle:** Installation details live in SETUP-GUIDE.md. Usage details live in README.md. Keep them separate for clarity.
+
+---
+
 ## Version
 
 **System Version:** 3.0
-**Last Updated:** 2025-10-25
+**Last Updated:** 2025-11-01
 **Status:** Production Ready
 
 ---

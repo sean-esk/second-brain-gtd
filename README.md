@@ -3,7 +3,7 @@
 A complete Getting Things Done (GTD) + Zettelkasten knowledge management system powered by Obsidian and Claude AI.
 
 **Version:** 3.0
-**Last Updated:** 2025-10-25
+**Last Updated:** 2025-11-01
 **Compatible With:** Obsidian + Claude Code
 
 ---
@@ -51,343 +51,86 @@ This is a **ready-to-use productivity and knowledge management system** that hel
 
 ---
 
-## Requirements
+## Quick Start
 
-Before you begin, you'll need to install a few tools. Follow these steps IN ORDER for the best experience!
+### New to Development?
 
-### Required Tools
+If you don't have Git, Node.js, or Claude Code installed yet, start here:
 
-1. **VS Code** - Your command center (includes terminal for running commands)
-2. **Git** - For downloading this repository
-3. **Claude CLI** - AI-powered assistant
-4. **Obsidian** - Note-taking app
+**[Complete Beginner Setup Guide](SETUP-GUIDE.md)** - Start from zero, we'll walk you through everything!
 
----
+This guide assumes you have no development environment set up. It covers:
+- Installing VS Code, Git, Node.js, and Claude Code
+- Downloading this repository
+- Running the `/setup` command
+- Configuring Obsidian
+- Optional sync setup
 
-## Installation Guide
-
-**IMPORTANT:** Follow these steps in this exact order!
-
-### Step 1: Install VS Code (Your Command Center)
-
-VS Code is where you'll run all the commands. It has a built-in terminal that makes everything easier.
-
-**Why VS Code first?**
-- Built-in terminal (no need to find your system terminal)
-- Easy to navigate folders
-- Can edit configuration files if needed
-- Beginner-friendly interface
-
-**Download for your platform:**
-- **macOS:** https://code.visualstudio.com/Download (choose "Mac")
-- **Windows:** https://code.visualstudio.com/Download (choose "Windows")
-- **Linux:** https://code.visualstudio.com/Download (choose "Linux")
-
-**Install:**
-1. Download the appropriate version
-2. Run the installer
-3. Complete installation with default settings
-
-**Verify it works:**
-1. Open VS Code
-2. Go to Terminal → New Terminal (or press Ctrl+` / Cmd+`)
-3. You should see a command prompt
-
-**Alternative:** If you're already comfortable with terminals, you can use your system terminal instead. But we recommend VS Code for beginners!
+**Estimated time:** 30-45 minutes for complete setup
 
 ---
 
-### Step 2: Install Git
+### Already Have Prerequisites?
 
-Git lets you download and manage this repository.
+If you already have Git, Node.js 18+, Claude Code, and Obsidian installed, continue below.
 
-**macOS:**
+#### Prerequisites
+
+Before you begin, make sure you have:
+
+- **Git** installed
+- **Node.js 18+** installed
+- **Claude Code** installed and authenticated
+- **Obsidian** installed
+
+**Not sure?** Run these commands:
+
 ```bash
-# Check if Git is already installed
 git --version
-
-# If not installed, install via Homebrew
-brew install git
-
-# Or download from: https://git-scm.com/download/mac
-```
-
-**Windows:**
-1. Download Git from: https://git-scm.com/download/win
-2. Run the installer
-3. Use default settings (just keep clicking "Next")
-
-**Linux (Ubuntu/Debian):**
-```bash
-sudo apt-get update
-sudo apt-get install git
-```
-
-**Verify installation in VS Code:**
-1. Open VS Code
-2. Open Terminal (Terminal → New Terminal)
-3. Type: `git --version`
-4. Should show: `git version 2.x.x`
-
----
-
-### Step 3: Download This Repository
-
-Now let's get the Second Brain files.
-
-**Option A: Download ZIP (Recommended)**
-
-1. Go to: https://github.com/[YOUR-USERNAME]/second-brain-starter
-2. Click the green "Code" button
-3. Click "Download ZIP"
-4. Extract to your Documents folder:
-   - macOS: `/Users/YourName/Documents/SecondBrain/`
-   - Windows: `C:\Users\YourName\Documents\SecondBrain\`
-
-**Option B: Git Clone (In VS Code Terminal)**
-
-1. Open VS Code
-2. Open Terminal (Terminal → New Terminal)
-3. Navigate to Documents:
-   ```bash
-   cd ~/Documents              # macOS/Linux
-   cd C:\Users\YourName\Documents  # Windows
-   ```
-4. Clone the repository:
-   ```bash
-   git clone https://github.com/[YOUR-USERNAME]/second-brain-starter.git
-   mv second-brain-starter SecondBrain
-   ```
-
-**Important:** Remember this folder location!
-
----
-
-### Step 4: Install Claude CLI
-
-Claude CLI is the AI assistant that powers the smart commands.
-
-**Installation:**
-
-Visit: https://docs.claude.com/en/docs/claude-code/getting-started
-
-Follow the installation instructions for your operating system.
-
-**Quick install (macOS/Linux):**
-```bash
-curl -fsSL https://claude.ai/install.sh | sh
-```
-
-**Windows:**
-Download the installer from the Claude Code website and run it.
-
-**Verify installation:**
-```bash
+node --version
 claude --version
-# Should show the Claude CLI version
 ```
 
-**First-time setup:**
-```bash
-# Claude CLI will walk you through authentication
-claude auth login
-```
+If all three show version numbers, you're ready! If not, see the [Setup Guide](SETUP-GUIDE.md).
 
----
+#### Quick Start Steps
 
-### Step 5: Run the Setup Command
-
-Now let's configure your Second Brain using VS Code!
-
-**Open the folder in VS Code:**
-
-1. Launch VS Code
-2. Go to File → Open Folder
-3. Navigate to and select the `SecondBrain` folder you downloaded
-4. Click "Select Folder" / "Open"
-
-**Open the terminal in VS Code:**
-
-1. Go to Terminal → New Terminal (or press Ctrl+` on Windows / Cmd+` on Mac)
-2. The terminal opens at the bottom of VS Code
-3. You should be in the SecondBrain folder automatically
-
-**Verify you're in the right place:**
+**1. Clone this repository:**
 
 ```bash
-ls -la      # macOS/Linux
-dir         # Windows
+git clone https://github.com/[YOUR-USERNAME]/second-brain-starter.git
+cd second-brain-starter
 ```
 
-You should see: `.claude` folder, `ObsidianVault` folder, `README.md`, `CLAUDE.md`
-
-**Run the setup:**
-
-In the VS Code terminal, type:
+**2. Run the setup command:**
 
 ```bash
 claude
 ```
 
 Then type:
+
 ```
 /setup
 ```
 
-**The setup will ask you questions like:**
-- What are your personal goals?
-- What do you want to accomplish in 6 months?
-- What are your main areas of responsibility?
+The setup will ask about your goals, priorities, and areas of responsibility. Answer thoughtfully - this helps the AI prioritize your work!
 
-**Answer thoughtfully** - this helps the AI understand how to prioritize your work!
+**3. Open the vault in Obsidian:**
 
-**What `/setup` creates:**
-- Your personalized context file with goals
-- Complete PARA folder structure
-- Initial configuration files
-- Welcome documentation
+1. Launch Obsidian
+2. Click **"Open folder as vault"**
+3. Navigate to the `ObsidianVault` folder inside this repository
+4. Click **"Open"**
 
-**Time needed:** 5-10 minutes
+**4. Start using your Second Brain:**
 
----
+```
+/capture Your first thought or task
+/daily-plan
+```
 
-### Step 6: Install Obsidian
-
-Obsidian is where you'll interact with your Second Brain.
-
-**Download Obsidian:**
-- Website: https://obsidian.md
-- macOS: https://obsidian.md/download (Mac Intel or Apple Silicon)
-- Windows: https://obsidian.md/download (Windows)
-- Linux: https://obsidian.md/download (AppImage, .deb, or Snap)
-
-**Install:**
-1. Download the appropriate version
-2. Run the installer
-3. Complete the installation
-
-**Don't open Obsidian yet!** We'll do that in the next step.
-
----
-
-### Step 7: Open Your Vault in Obsidian
-
-Now let's connect Obsidian to your Second Brain files.
-
-**Launch Obsidian:**
-
-**First-time launch:**
-1. Obsidian will ask: "Create a new vault or open existing?"
-2. Click: **"Open folder as vault"**
-3. Navigate to: `SecondBrain/ObsidianVault`
-   - macOS: `/Users/YourName/Documents/SecondBrain/ObsidianVault`
-   - Windows: `C:\Users\YourName\Documents\SecondBrain\ObsidianVault`
-4. Click "Open"
-
-**You're in!** 🎉
-
-You should now see:
-- Folder structure in the left sidebar
-- README.md file open in the main area
-- Your Assisting-User-Context file in Permanent Notes
-
----
-
-## Syncing Your Vault (Optional)
-
-Want to access your Second Brain on multiple devices? Here are your options:
-
-### Option 1: Obsidian Sync (Paid, Official)
-
-**Best for:** People who want seamless sync with zero setup
-
-**Cost:** $10/month (includes version history and mobile app sync)
-
-**Setup:**
-1. In Obsidian, go to Settings → Core Plugins
-2. Enable "Sync"
-3. Sign up for Obsidian Sync
-4. Follow the prompts to connect your vault
-
-**Website:** https://obsidian.md/sync
-
----
-
-### Option 2: iCloud Drive (Free, Mac/iOS Only)
-
-**Best for:** Apple users who want free syncing
-
-**Setup:**
-
-1. **Move your vault to iCloud:**
-   ```bash
-   # Create Obsidian folder in iCloud Drive
-   mkdir -p ~/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian
-
-   # Move your vault
-   mv ~/Documents/SecondBrain/ObsidianVault ~/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian/
-   ```
-
-2. **Update your Claude Code working directory:**
-   - Close Claude Code
-   - Navigate to the new location:
-     ```bash
-     cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Obsidian
-     ```
-   - Open Claude Code from here
-
-3. **Re-open vault in Obsidian:**
-   - In Obsidian: Settings → Files and Links
-   - Close current vault
-   - Open folder: `~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/ObsidianVault`
-
-4. **On iOS:**
-   - Install Obsidian from App Store
-   - Open vault at: iCloud Drive → Obsidian → ObsidianVault
-
-**Syncing happens automatically!**
-
----
-
-### Option 3: Git (Free, Advanced Users)
-
-**Best for:** Developers comfortable with version control
-
-**Setup:**
-1. Initialize Git in the ObsidianVault folder:
-   ```bash
-   cd ObsidianVault
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
-
-2. Create a private GitHub repository
-3. Push your vault:
-   ```bash
-   git remote add origin https://github.com/yourusername/your-vault.git
-   git push -u origin main
-   ```
-
-4. On other devices:
-   ```bash
-   git clone https://github.com/yourusername/your-vault.git
-   ```
-
-**Note:** Be careful not to commit sensitive information!
-
----
-
-### Option 4: Dropbox, Google Drive, OneDrive
-
-**Best for:** People already using these services
-
-**Setup:**
-1. Move `ObsidianVault` folder to your sync folder
-2. Update paths in Claude Code (same as iCloud process above)
-3. Open vault from sync folder in Obsidian
-
-**Important:** Some sync services can cause conflicts. Obsidian Sync is most reliable.
+**Next:** Check out the [First Week Guide](ObsidianVault/START%20HERE%20-%20First%20Week%20Guide.md) in your vault.
 
 ---
 
@@ -554,36 +297,6 @@ All templates are in `ObsidianVault/Templates/` and can be customized:
 
 ## Troubleshooting
 
-### "Command not found" when running `/setup`
-
-**Cause:** Claude CLI not in the correct directory
-
-**Fix:**
-```bash
-# Navigate to the 0-claude folder (parent of ObsidianVault)
-cd ~/Documents/SecondBrain  # Or wherever you put it
-
-# Verify you see .claude folder
-ls -la
-
-# Now run Claude
-claude
-```
-
----
-
-### "Can't find ObsidianVault folder"
-
-**Cause:** Commands expect vault in specific location
-
-**Fix:**
-Make sure:
-1. Your terminal is in the `SecondBrain` folder (parent of ObsidianVault)
-2. The folder is named `ObsidianVault` exactly (case-sensitive)
-3. Run `/setup` if you haven't yet
-
----
-
 ### Changes Not Syncing
 
 **iCloud:**
@@ -613,7 +326,13 @@ Make sure:
 1. In Obsidian: Settings → General
 2. Click "Open another vault"
 3. Navigate to correct `ObsidianVault` folder
-4. Open it
+4. Make sure you're opening `ObsidianVault`, not the repository root
+
+---
+
+### Installation Issues
+
+For problems with installing Git, Node.js, Claude Code, or Obsidian, see the [Setup Guide Troubleshooting](SETUP-GUIDE.md#troubleshooting) section.
 
 ---
 
@@ -732,7 +451,7 @@ This system is provided as-is for personal use. Customize freely!
 ---
 
 **Version:** 3.0
-**Last Updated:** 2025-10-25
+**Last Updated:** 2025-11-01
 **Status:** Production Ready
 
 **Ready to build your Second Brain?** 🧠
