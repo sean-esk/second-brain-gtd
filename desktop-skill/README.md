@@ -9,126 +9,72 @@ A personal knowledge management and productivity skill combining GTD (Getting Th
 - **Inbox Processing** - GTD-style clarification and organization
 - **Daily Closeout** - End-of-day review and tomorrow preparation
 - **Proactive Capture** - Claude offers to save valuable insights during conversations
+- **Persistent Config** - Set up once, remembered forever
 
-## Installation
+## Quick Start
 
-### Step 1: Copy the Skill
-
-Copy the `second-brain` folder to your Claude skills directory:
+### 1. Install the Skill
 
 ```bash
-# Create the skills directory if it doesn't exist
-mkdir -p ~/.claude/skills
-
-# Copy the skill
+# Copy skill to Claude skills directory
 cp -r second-brain ~/.claude/skills/
 ```
 
-### Step 2: Configure Your Vault Path
+### 2. Start Using It
 
-Choose ONE of these options:
-
-#### Option A: Environment Variable (Recommended)
-
-Add to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
-
-```bash
-export SECOND_BRAIN_VAULT_PATH="/path/to/your/obsidian/vault"
-```
-
-Then reload your shell:
-```bash
-source ~/.bashrc  # or ~/.zshrc
-```
-
-#### Option B: Config File
-
-Create the config directory and file:
-
-```bash
-mkdir -p ~/.second-brain
-```
-
-Create `~/.second-brain/config.json`:
-
-```json
-{
-  "vaultPath": "/path/to/your/obsidian/vault",
-  "setupComplete": false,
-  "userName": "",
-  "userContext": "Permanent Notes/Assisting-User-Context.md",
-  "preferences": {
-    "defaultCaptureType": "inbox",
-    "proactiveCapture": true,
-    "inboxThreshold": 5
-  }
-}
-```
-
-#### Option C: Interactive Setup
-
-Simply start using the skill and say "set up my second brain" - Claude will guide you through configuration.
-
-### Step 3: Initial Setup
-
-After installation, tell Claude:
+Just tell Claude:
 
 > "Set up my Second Brain"
 
-This will:
-1. Validate your vault path
-2. Create the required folder structure
-3. Ask about your goals and preferences
-4. Create your personal context file
-5. Set up default areas (Career, Health, Personal Dev, Errands, Todos)
-6. Create relationship notes for important people
-7. Help you create your first project
+Claude will:
+1. Ask for your Obsidian vault path
+2. **Save it to `~/.second-brain/config.json`** (remembered forever)
+3. Guide you through personalization (goals, people, first project)
+4. Create your folder structure
+
+**That's it!** No manual config needed.
+
+## How Configuration Works
+
+1. **First time**: Claude asks "Where is your vault?" → You provide the path
+2. **Claude saves**: Creates `~/.second-brain/config.json` with your vault path
+3. **Forever after**: Claude reads this file automatically - no more setup needed
+
+```json
+// ~/.second-brain/config.json (created automatically)
+{
+  "vaultPath": "/Users/you/Documents/MyVault",
+  "setupComplete": true,
+  "userName": "Your Name"
+}
+```
 
 ## Usage
 
-### Natural Language Commands
+Just talk naturally:
 
-Just talk to Claude naturally. The skill responds to phrases like:
-
-**Capture:**
-- "Capture: need to call the dentist tomorrow"
-- "Save this thought: idea for new project..."
-- "Remember this: meeting notes from today..."
-
-**Daily Planning:**
-- "Plan my day"
-- "What should I work on today?"
-- "I need to figure out my priorities"
-
-**Process Inbox:**
-- "Process my inbox"
-- "Organize my captures"
-- "Help me clarify my tasks"
-
-**Daily Closeout:**
-- "Daily closeout"
-- "Review my day"
-- "Let's wrap up for today"
-
-**Setup:**
-- "Set up my Second Brain"
-- "Configure my vault"
-- "I want to update my goals"
+| Say | What Happens |
+|-----|--------------|
+| "Capture: call dentist tomorrow" | Saves to today's inbox |
+| "Plan my day" | Creates prioritized daily plan |
+| "Process my inbox" | Organizes captures into projects/areas |
+| "Daily closeout" | Reviews day, preps tomorrow |
+| "Set up my second brain" | First-time or reconfigure |
 
 ### Proactive Capture
 
-When you're discussing topics with Claude and something valuable comes up, Claude will offer:
+When discussing topics, Claude will offer:
 
-> "That's an interesting insight about [topic]. Would you like me to capture this to your Second Brain?"
+> "That's an interesting insight. Would you like me to capture this to your Second Brain?"
 
 ## Vault Structure
 
-The skill creates/uses this structure:
+The skill creates/manages this structure:
 
 ```
 YourVault/
 ├── 00-Inbox/
-│   ├── Daily/              # Captures (YYYY-MM-DD.md)
+│   ├── Daily/              # Daily captures (YYYY-MM-DD.md)
 │   └── Fleeting-Notes/     # Knowledge items
 ├── 01-Projects/            # Active projects
 ├── 02-Areas/               # Ongoing responsibilities
@@ -150,87 +96,80 @@ YourVault/
 
 ## Daily Workflow
 
-1. **Throughout day:** "Capture: [anything on your mind]" (30 sec each)
-2. **3x per week:** "Process my inbox" (15 min)
-3. **Every morning:** "Plan my day" (5 min)
-4. **Every evening:** "Daily closeout" (5 min)
+| When | Action | Time |
+|------|--------|------|
+| Throughout day | "Capture: [thought]" | 30 sec |
+| 3x per week | "Process my inbox" | 15 min |
+| Every morning | "Plan my day" | 5 min |
+| Every evening | "Daily closeout" | 5 min |
 
-**Total time:** ~20-25 min/day + 45 min/week = Sustainable!
+**Total: ~20-25 min/day + 45 min/week = Sustainable!**
 
 ## Skill Contents
 
 ```
 second-brain/
-├── SKILL.md                    # Main skill definition
+├── SKILL.md                    # Main skill with triggers
 ├── config/
 │   ├── config-template.json    # Config template
-│   └── README.md               # Config documentation
+│   └── README.md               # Config docs
 ├── workflows/
-│   ├── setup.md                # Initial setup
+│   ├── setup.md                # Interactive onboarding
 │   ├── capture.md              # Quick capture
-│   ├── process-inbox.md        # GTD processing
-│   ├── daily-plan.md           # Daily planning
-│   └── daily-closeout.md       # End of day review
+│   ├── process-inbox.md        # GTD clarify/organize
+│   ├── daily-plan.md           # Morning planning
+│   └── daily-closeout.md       # Evening review
 ├── references/
-│   ├── gtd-methodology.md      # GTD reference
-│   ├── para-zettelkasten.md    # Organization system
+│   ├── gtd-methodology.md      # GTD principles
+│   ├── para-zettelkasten.md    # Folder organization
 │   ├── obsidian-mastery.md     # Obsidian conventions
 │   └── tagging-strategy.md     # Tag taxonomy
 └── templates/
-    ├── project.md
-    ├── area.md
-    ├── permanent-note.md
-    ├── relationship.md
-    └── user-context.md
+    ├── project.md              # Multi-step outcomes
+    ├── area.md                 # Ongoing responsibilities
+    ├── permanent-note.md       # Zettelkasten notes
+    ├── fleeting-note.md        # Quick knowledge capture
+    ├── relationship.md         # People tracking
+    ├── meeting-note.md         # Meeting documentation
+    ├── daily-plan.md           # Daily execution plan
+    ├── daily-inbox.md          # Daily capture file
+    └── user-context.md         # User goals & preferences
 ```
 
 ## Troubleshooting
 
 ### Skill Not Activating
 
-1. Verify the skill is in `~/.claude/skills/second-brain/`
-2. Check that `SKILL.md` exists and has valid YAML frontmatter
-3. Try being more explicit: "Use my Second Brain to capture..."
+1. Verify skill is in `~/.claude/skills/second-brain/`
+2. Check `SKILL.md` has valid YAML frontmatter
+3. Try: "Use my Second Brain to capture..."
 
 ### Vault Path Issues
 
-1. Check your config at `~/.second-brain/config.json`
-2. Or verify environment variable: `echo $SECOND_BRAIN_VAULT_PATH`
-3. Ensure the path is absolute (starts with `/`)
+1. Check config: `cat ~/.second-brain/config.json`
+2. Ensure path is absolute (starts with `/`)
 
-### Setup Not Working
+### Reset Setup
 
-1. Delete the config file: `rm ~/.second-brain/config.json`
-2. Say "set up my second brain" to restart setup
-3. Provide the full absolute path when asked
+```bash
+rm ~/.second-brain/config.json
+```
+Then say "set up my second brain" to start fresh.
 
 ## Integration with Obsidian
 
-This skill works with any Obsidian vault. For best results:
+Works with any Obsidian vault. Recommended plugins:
 
-1. Install [Obsidian](https://obsidian.md)
-2. Open your vault folder in Obsidian
-3. Enable the following core plugins:
-   - Backlinks
-   - Tags
-   - Search
-4. Optional but recommended:
-   - Dataview plugin (for advanced queries)
-   - Tasks plugin (for task management)
+- **Core**: Backlinks, Tags, Search
+- **Optional**: Dataview, Tasks
 
 ## Updates
-
-To update the skill, pull the latest version and copy again:
 
 ```bash
 cp -r second-brain ~/.claude/skills/
 ```
 
-Your configuration at `~/.second-brain/config.json` is preserved.
-
-## Contributing
-
-This skill is part of the [second-brain-gtd](https://github.com/sean-eskerium/second-brain-gtd) project.
+Config at `~/.second-brain/config.json` is preserved.
 
 ## License
 

@@ -22,51 +22,74 @@ A personal knowledge management and productivity system for Obsidian, combining:
 - **Zettelkasten** - Atomic note-taking for knowledge building
 - **PARA Method** - Folder organization (Projects, Areas, Resources, Archives)
 
-## Configuration
+## Configuration (PERSISTENT)
 
 **CRITICAL FIRST STEP:** Before any operation, check for configuration.
 
-### Configuration Location
+### How Configuration Works
 
-Check for config file at: `~/.second-brain/config.json`
+Configuration is stored at `~/.second-brain/config.json` and **persists across all sessions**.
+
+Once set up, the skill remembers:
+- Your vault path
+- Your name
+- Whether setup is complete
+- Your preferences
+
+### Configuration Check Flow
+
+1. **Check** for `~/.second-brain/config.json`
+2. **If exists and setupComplete=true**: Read vaultPath and proceed with requested action
+3. **If exists but setupComplete=false**: Continue setup workflow
+4. **If doesn't exist**: Ask for vault path, save config, run full setup
+
+### If No Configuration Found (First Time)
+
+Ask the user for their vault path:
+
+```
+Welcome to Second Brain!
+
+I need to know where your Obsidian vault is located so I can save and organize your notes.
+
+Please provide the full path to your Obsidian vault folder.
+
+Examples:
+- macOS: /Users/yourname/Documents/MyVault
+- Windows: C:\Users\yourname\Documents\MyVault
+- Linux: /home/yourname/Documents/MyVault
+
+What's the path to your vault?
+```
+
+Once you have the path:
+1. Create `~/.second-brain/` directory: `mkdir -p ~/.second-brain`
+2. Create `config.json` with vault path and `setupComplete: false`
+3. Run the full [setup workflow](workflows/setup.md) to complete onboarding
+4. Mark `setupComplete: true` when done
+
+**The config file is now saved and will be remembered in all future sessions.**
+
+### Config File Format
 
 ```json
 {
   "vaultPath": "/absolute/path/to/obsidian/vault",
   "setupComplete": true,
   "userName": "User Name",
-  "userContext": "Permanent Notes/Assisting-User-Context.md"
+  "userContext": "Permanent Notes/Assisting-User-Context.md",
+  "preferences": {
+    "proactiveCapture": true,
+    "inboxThreshold": 5
+  }
 }
 ```
-
-**Alternative:** Check environment variable `SECOND_BRAIN_VAULT_PATH`
-
-### If No Configuration Found
-
-Guide the user through setup:
-
-```
-I'd like to help you with your Second Brain, but I don't see a configuration yet.
-
-To get started, I need to know where your Obsidian vault is located.
-
-Option 1: Set environment variable
-   export SECOND_BRAIN_VAULT_PATH="/path/to/your/vault"
-
-Option 2: Let me create a config file
-   Tell me the full path to your Obsidian vault (e.g., /Users/you/Documents/MyVault)
-
-Which would you prefer?
-```
-
-Once you have the path:
-1. Create `~/.second-brain/` directory if needed
-2. Create `config.json` with the vault path
-3. Run the full [setup workflow](workflows/setup.md)
 
 ### If Configuration Exists
 
 Read the config and use `vaultPath` for ALL file operations.
+
+**Alternative:** Environment variable `SECOND_BRAIN_VAULT_PATH` can override config file.
 
 ---
 
@@ -211,6 +234,24 @@ See: [PARA + Zettelkasten Guide](references/para-zettelkasten.md)
 ## Completed
 - Finished tasks with dates
 ```
+
+---
+
+## Templates
+
+Use these templates when creating new notes:
+
+| Template | Use When |
+|----------|----------|
+| [project.md](templates/project.md) | Creating a new project (multi-step outcome) |
+| [area.md](templates/area.md) | Creating a new area of responsibility |
+| [permanent-note.md](templates/permanent-note.md) | Creating a Zettelkasten permanent note |
+| [fleeting-note.md](templates/fleeting-note.md) | Quick knowledge capture for later processing |
+| [relationship.md](templates/relationship.md) | Tracking an important person |
+| [meeting-note.md](templates/meeting-note.md) | Meeting documentation |
+| [daily-plan.md](templates/daily-plan.md) | Daily execution plan |
+| [daily-inbox.md](templates/daily-inbox.md) | Daily capture file |
+| [user-context.md](templates/user-context.md) | User goals and preferences |
 
 ---
 
