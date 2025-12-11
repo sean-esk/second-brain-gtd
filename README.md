@@ -8,29 +8,34 @@ A personal knowledge management and productivity system powered by GTD, Zettelka
 
 ---
 
-## What Is This?
+## Why Second Brain?
 
-This is a **ready-to-use productivity skill** that gives Claude the ability to manage your personal knowledge and tasks through natural conversation. Just talk to Claude naturally:
+**The problem:** Your brain is great at having ideas, but terrible at storing them. Important thoughts slip away. Tasks get forgotten. Notes end up scattered across apps, files, and sticky notes. You spend more time searching for information than actually using it.
 
-- "Capture: need to call the dentist tomorrow"
-- "Plan my day"
-- "Process my inbox"
-- "Daily closeout"
+**The solution:** A Second Brain - a single, organized system where everything lives together and nothing falls through the cracks.
 
-**The skill enables Claude to:**
+### What This Skill Gives You
 
-- **Capture** thoughts and tasks to your Obsidian vault
-- **Organize** using GTD (Getting Things Done) methodology
-- **Build** connected knowledge with Zettelkasten principles
-- **Plan** your day based on energy and context
-- **Review** and reflect on progress
+**An AI assistant that knows your system.** Claude becomes your personal productivity partner. It captures your thoughts, organizes your tasks, plans your day, and keeps everything in sync - all through natural conversation. No learning complex apps or remembering special commands.
+
+**The GTD methodology, without the overhead.** Getting Things Done (GTD) is one of the most effective productivity systems ever created, but implementing it yourself takes discipline. This skill handles the methodology for you:
+- **Capture** everything that has your attention (tasks, ideas, notes)
+- **Clarify** what each item means and what action is needed
+- **Organize** into projects, areas, and reference material
+- **Review** regularly to keep the system current
+- **Plan** each day based on your priorities and energy
+
+**Templates for everything.** Pre-built templates for projects, meeting notes, permanent notes, relationships, and daily plans. No more staring at blank pages wondering how to structure information.
+
+**Everything in one place.** All your notes, tasks, projects, and knowledge live in your Obsidian vault - plain markdown files you own forever. No vendor lock-in, no proprietary formats.
+
+**Use Obsidian alongside Claude.** Your vault is always accessible in Obsidian for browsing, searching, linking, and editing. Claude handles the capture and organization; you can dive into your notes anytime with Obsidian's powerful features (graph view, search, backlinks, plugins).
 
 **Perfect for:**
-
 - Knowledge workers juggling multiple projects
-- Anyone wanting a structured but flexible productivity system
-- People with ADHD looking for low-friction capture and organization
-- Users who want AI-assisted task management in their Obsidian vault
+- Anyone wanting structure without complexity
+- People with ADHD who need low-friction capture
+- Users who want AI-assisted task management they actually own
 
 ---
 
