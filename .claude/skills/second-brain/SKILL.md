@@ -1,18 +1,7 @@
 ---
-name: Second Brain
+name: second-brain
 description: |
-  Personal knowledge management and productivity system combining GTD (Getting Things Done), Zettelkasten note-taking, and PARA organization for Obsidian vaults.
-
-  Use this skill when:
-  - User wants to capture thoughts, ideas, tasks, or notes ("capture this", "save this thought", "remember this", "note this down", "add to my inbox")
-  - User wants to plan their day ("plan my day", "what should I work on today", "daily planning", "morning planning")
-  - User wants to process their inbox ("process my inbox", "organize my captures", "clarify my tasks", "GTD processing")
-  - User wants to review their day ("daily closeout", "review my day", "end of day review", "evening reflection")
-  - User wants to set up or configure their Second Brain ("set up my second brain", "configure my vault", "second brain setup")
-  - User asks about their projects, tasks, priorities, or goals
-  - User is doing research or brainstorming and might want to preserve insights
-
-  PROACTIVE BEHAVIOR: When the user is researching topics, discussing ideas, or working through problems, offer to capture valuable insights to their Second Brain. Ask: "Would you like me to capture this insight to your Second Brain?"
+  Unified personal knowledge management system combining GTD (Getting Things Done), Zettelkasten atomic note-taking, and PARA folder organization for Obsidian vaults. Provides five core workflows: (1) Quick capture for thoughts, ideas, and tasks without categorization; (2) Inbox processing to clarify and route items using GTD principles; (3) Daily planning to select work based on energy, context, and priorities; (4) Daily closeout for reflection and tomorrow preparation; (5) Initial setup and vault configuration. Triggers on phrases like "capture this", "save this thought", "remember this", "note this down", "plan my day", "what should I work on", "process my inbox", "organize my captures", "daily closeout", "review my day", "set up my second brain", or questions about projects, tasks, priorities, and goals. Proactively offers to capture valuable insights during research and brainstorming. Designed for ADHD-friendly workflows.
 ---
 
 # Second Brain
@@ -374,3 +363,18 @@ Claude Code has built-in file system access. These tools are available:
 **Important:** The skill is designed to work in BOTH environments:
 - **Configuration** is stored in Claude Memory (works everywhere)
 - **File operations** use the filesystem extension (Desktop) or built-in tools (Code)
+
+---
+
+## Version History
+
+**Version 4.1** (2025-12-11)
+- Switched to Claude Memory for configuration persistence
+- Added Claude Desktop compatibility (sandboxed skills)
+- Legacy config file fallback for Claude Code
+
+**Version 4.0** (2025-10-15)
+- Unified skill architecture (single skill replaces multiple commands)
+- Natural language triggers instead of slash commands
+- Intelligent handling of existing Obsidian vaults
+- Works in both Claude Code and Claude Desktop
