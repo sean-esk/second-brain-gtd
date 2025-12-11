@@ -2,9 +2,9 @@
 
 A complete Getting Things Done (GTD) + Zettelkasten knowledge management system powered by Obsidian and Claude AI.
 
-**Version:** 3.0
-**Last Updated:** 2025-11-01
-**Compatible With:** Obsidian + Claude Code
+**Version:** 4.0
+**Last Updated:** 2025-12-11
+**Compatible With:** Claude Code + Claude Desktop + Obsidian
 
 ---
 
@@ -12,11 +12,11 @@ A complete Getting Things Done (GTD) + Zettelkasten knowledge management system 
 
 This is a **ready-to-use productivity and knowledge management system** that helps you:
 
-- ✅ **Capture** thoughts instantly without friction
-- ✅ **Organize** projects and tasks using the GTD methodology
-- ✅ **Build** a connected network of knowledge with Zettelkasten
-- ✅ **Plan** your day based on energy and context
-- ✅ **Review** regularly to keep everything on track
+- **Capture** thoughts instantly without friction
+- **Organize** projects and tasks using the GTD methodology
+- **Build** a connected network of knowledge with Zettelkasten
+- **Plan** your day based on energy and context
+- **Review** regularly to keep everything on track
 
 **Perfect for:**
 - Knowledge workers who juggle multiple projects
@@ -26,414 +26,317 @@ This is a **ready-to-use productivity and knowledge management system** that hel
 
 ---
 
-## What You'll Get
+## What's New in v4.0
 
-### Productivity System (GTD)
-- Daily planning based on context and energy
-- Weekly review process
-- Project and task management
-- Inbox processing workflows
-
-### Knowledge System (Zettelkasten)
-- Atomic note-taking for connected knowledge
-- Progressive elaboration over time
-- Maps of Content for organization
-- Quality maintenance workflows
-
-### AI-Powered Commands
-- `/setup` - Interactive onboarding
-- `/capture` - Quick thought and task capture
-- `/process-inbox` - Organize captured items
-- `/daily-plan` - Generate today's execution plan
-- `/daily-closeout` - Review and plan tomorrow
-
-**That's it!** Simple and focused.
+- **Natural Language Triggers** - Just talk naturally instead of slash commands
+- **Unified Skill** - One skill does everything (replaces multiple skills + commands)
+- **Works Everywhere** - Same skill for Claude Code AND Claude Desktop
+- **Existing Vault Support** - Setup intelligently handles existing Obsidian vaults
+- **Persistent Config** - Your settings persist across sessions
 
 ---
 
-## Quick Start
+## Installation
 
-### New to Development?
+### Option 1: Claude Code (Recommended for Power Users)
 
-If you don't have Git, Node.js, or Claude Code installed yet, start here:
-
-**[Complete Beginner Setup Guide](SETUP-GUIDE.md)** - Start from zero, we'll walk you through everything!
-
-This guide assumes you have no development environment set up. It covers:
-- Installing VS Code, Git, Node.js, and Claude Code
-- Downloading this repository
-- Running the `/setup` command
-- Configuring Obsidian
-- Optional sync setup
-
-**Estimated time:** 30-45 minutes for complete setup
-
----
-
-### Already Have Prerequisites?
-
-If you already have Git, Node.js 18+, Claude Code, and Obsidian installed, continue below.
-
-#### Prerequisites
-
-Before you begin, make sure you have:
-
-- **Git** installed
-- **Node.js 18+** installed
-- **Claude Code** installed and authenticated
-- **Obsidian** installed
-
-**Not sure?** Run these commands:
+**Prerequisites:** Git, Node.js 18+, Claude Code, Obsidian
 
 ```bash
-git --version
-node --version
-claude --version
-```
+# Clone the repository
+git clone https://github.com/[YOUR-USERNAME]/second-brain-gtd.git
+cd second-brain-gtd
 
-If all three show version numbers, you're ready! If not, see the [Setup Guide](SETUP-GUIDE.md).
-
-#### Quick Start Steps
-
-**1. Clone this repository:**
-
-```bash
-git clone https://github.com/[YOUR-USERNAME]/second-brain-starter.git
-cd second-brain-starter
-```
-
-**2. Run the setup command:**
-
-```bash
+# Start Claude Code
 claude
 ```
 
-Then type:
+Then just say: **"Set up my second brain"**
 
-```
-/setup
-```
-
-The setup will ask about your goals, priorities, and areas of responsibility. Answer thoughtfully - this helps the AI prioritize your work!
-
-**3. Open the vault in Obsidian:**
-
-1. Launch Obsidian
-2. Click **"Open folder as vault"**
-3. Navigate to the `ObsidianVault` folder inside this repository
-4. Click **"Open"**
-
-**4. Start using your Second Brain:**
-
-```
-/capture Your first thought or task
-/daily-plan
-```
-
-**Next:** Check out the [First Week Guide](ObsidianVault/START%20HERE%20-%20First%20Week%20Guide.md) in your vault.
+The skill is automatically available from the `.claude/skills/second-brain/` folder.
 
 ---
 
-## Getting Started
+### Option 2: Claude Desktop (Easiest)
 
-Now that everything is installed, here's how to use your Second Brain!
+1. **Download the skill:**
+   - Download or clone this repository
+   - Navigate to `.claude/skills/second-brain/`
+   - Zip the entire `second-brain` folder
 
-### The Core Loop
+2. **Install in Claude Desktop:**
+   - Open Claude Desktop
+   - Go to Settings → Skills (or Features)
+   - Click "Add Skill" or "Import"
+   - Select the `second-brain.zip` file
+
+3. **Start using it:**
+   - Just say: **"Set up my second brain"**
+   - Claude will ask for your Obsidian vault path and guide you through setup
+
+---
+
+### New to Development?
+
+If you don't have Git, Node.js, or Claude Code installed yet:
+
+**[Complete Beginner Setup Guide](SETUP-GUIDE.md)** - Start from zero!
+
+---
+
+## How to Use
+
+### Just Talk Naturally!
+
+No commands to memorize. Just tell Claude what you want:
+
+| What You Want | What to Say |
+|---------------|-------------|
+| **First-time setup** | "Set up my second brain" or "Configure my vault" |
+| **Capture a thought** | "Capture: [your thought]" or "Remember this: [idea]" |
+| **Plan your day** | "Plan my day" or "What should I work on today?" |
+| **Process captures** | "Process my inbox" or "Organize my captures" |
+| **End of day review** | "Daily closeout" or "Review my day" |
+
+**Proactive Capture:** When you're researching or discussing topics, Claude will offer to save valuable insights to your Second Brain!
+
+---
+
+## The Core Workflow
 
 ```
 CAPTURE → PROCESS → PLAN → CLOSEOUT → (repeat)
 ```
 
-1. **Capture** (`/capture`) - Get thoughts out of your head
-2. **Process** (`/process-inbox`) - Clarify and organize (3x/week)
-3. **Plan** (`/daily-plan`) - Choose what to work on (every morning)
-4. **Closeout** (`/daily-closeout`) - Review and prep tomorrow (every evening)
+### Throughout the Day: Capture
+> "Capture: Need to call dentist about appointment"
+> "Remember this: Great idea for the project..."
 
-**That's the entire system!**
-
-### First Week Guide
-
-**New users:** See `ObsidianVault/START HERE - First Week Guide.md` for day-by-day checklist!
-
-### Daily Workflow
-
-**Throughout the Day:**
-```
-/capture Your thought or task here
-```
-- Get it out of your head (GTD Capture stage)
-- Everything appends to today's inbox file
+- Get thoughts out of your head instantly
+- Everything goes to your daily inbox
 - No organizing - just capture!
 
-**Morning (5 minutes):**
-```
-/daily-plan
-```
-- Choose what to work on today (GTD Engage stage)
-- Matches tasks to your energy and context
-- Creates must-do, should-do, and quick-win lists
-- Enhances draft plan from last night if it exists
+### Morning (5 min): Plan
+> "Plan my day"
 
-**Evening (5 minutes):**
-```
-/daily-closeout
-```
-- Review what you accomplished (GTD Reflect stage)
-- Mark completed tasks
-- Create tomorrow's DRAFT plan (refined in morning)
+- Reviews your projects and areas
+- Asks about your energy, time, and context
+- Creates a prioritized task list
 
----
+### Evening (5 min): Closeout
+> "Daily closeout"
 
-### Weekly Workflow
+- Review what you accomplished
+- Mark tasks complete
+- Create tomorrow's draft plan
 
-**3x Per Week (15 min each):**
-```
-/process-inbox
-```
-- Clarify what each capture means (GTD Clarify stage)
-- Organize into projects/tasks/notes (GTD Organize stage)
-- Review all active projects (GTD Reflect stage)
-- Archive completed projects
-- Get inbox to zero
-- **This combines processing AND weekly review!**
+### 3x Per Week (15 min): Process
+> "Process my inbox"
+
+- Clarify what each capture means
+- Organize into projects/tasks/notes
+- Review active projects
+- Archive completed items
 
 ---
 
-## All Available Commands
+## What Gets Created
 
-| Command | Purpose | When to Use |
-|---------|---------|-------------|
-| `/setup` | Configure your system | First time setup |
-| `/capture` | Quick capture | Anytime you have a thought |
-| `/process-inbox` | Organize captures | 3x per week |
-| `/daily-plan` | Plan your day | Every morning |
-| `/daily-closeout` | Review and prep tomorrow | Every evening |
-
-**That's all you need!** Simple workflow, powerful results.
-
----
-
-## Folder Structure
-
-After setup, your ObsidianVault will look like this:
+### Your Vault Structure
 
 ```
-ObsidianVault/
+YourVault/
 ├── 00-Inbox/                  # Unprocessed captures
-│   ├── Daily/                 # ALL captures from /capture
-│   └── Fleeting-Notes/        # Knowledge items from /process-inbox
-├── 01-Projects/               # Active projects (GTD multi-step outcomes)
-├── 02-Areas/                  # Ongoing responsibilities (no end date)
+│   ├── Daily/                 # Quick captures
+│   └── Fleeting-Notes/        # Knowledge items
+├── 01-Projects/               # Active projects
+├── 02-Areas/                  # Ongoing responsibilities
 │   ├── Career-Development.md
 │   ├── Health-Fitness.md
 │   ├── Personal-Development.md
 │   ├── Errands.md
 │   ├── Personal-Todos.md
-│   └── Relationships/         # Individual notes per person
+│   └── Relationships/         # Notes per person
 ├── 03-Resources/              # Reference materials
-│   └── Reference-Notes/       # Summaries of external sources
 ├── 04-Archives/               # Completed projects
-├── Daily Plans/               # Generated plans
+├── Daily Plans/               # Your daily plans
 ├── Meeting Notes/             # Meeting documentation
-├── Permanent Notes/           # Your insights (Zettelkasten)
-└── Templates/                 # Reusable templates
+└── Permanent Notes/           # Your insights (Zettelkasten)
 ```
 
-**Simple and Clean!**
+### Configuration
 
-**Default Areas (Created During Setup):**
-- **Career-Development** - Professional growth, skills, networking
-- **Health-Fitness** - Physical health, mental wellness
-- **Personal-Development** - Learning, hobbies, growth
-- **Errands** - Shopping, errands, things to buy
-- **Personal-Todos** - Miscellaneous one-off tasks
-- **Relationships/** - Folder for important people (business partners, family, colleagues)
+Your settings are saved to `~/.second-brain/config.json`:
 
-**What goes where:**
-- **All captures** → 00-Inbox/Daily
-- **Projects** → 01-Projects
-- **One-off tasks** → Appropriate Area (Errands, Personal-Todos, etc.)
-- **People items** → Relationships/Person-Name.md
-- **Your insights** → Permanent Notes
-- **Source summaries** → 03-Resources/Reference-Notes
+```json
+{
+  "vaultPath": "/path/to/your/vault",
+  "setupComplete": true,
+  "userName": "Your Name",
+  "preferences": {
+    "proactiveCapture": true,
+    "inboxThreshold": 5
+  }
+}
+```
 
-**During `/setup`, you'll define your specific areas and create your first projects!**
+This persists across sessions - no need to reconfigure!
 
 ---
 
-## Customization
+## Existing Vault Support
 
-### Your Areas and Projects
+**Already have an Obsidian vault?** No problem!
 
-The folder structure is **customized to you** during `/setup`. Examples:
+During setup, Claude will:
+1. Analyze your existing folder structure
+2. Show you what's already there
+3. Offer two approaches:
+   - **Additive:** Create Second Brain folders alongside your content
+   - **Migration:** Help categorize and move existing files (with your approval)
 
-**Projects might be:**
-- Work/Website-Redesign
-- Personal/Home-Renovation
-- Side-Business/Product-Launch
-
-**Areas might be:**
-- Career-Development
-- Health-Fitness
-- Content-Creation
-- Financial-Planning
-
-### Your Tags
-
-Tags are also customized during setup. Common examples:
-- `#work`, `#personal`, `#side-business`
-- `#status/active`, `#status/waiting`
-- `#priority/high`, `#priority/medium`
-
-### Templates
-
-All templates are in `ObsidianVault/Templates/` and can be customized:
-- Atomic Note.md
-- Meeting Note.md
-- Project Template.md
-- MOC Template.md
+**Your existing content is never deleted or modified without explicit permission.**
 
 ---
 
-## Troubleshooting
+## Example Conversations
 
-### Changes Not Syncing
+### Quick Capture
+```
+You: Capture: Call mom about birthday plans
+Claude: Captured to your inbox! Added to 2025-12-11.md
+```
 
-**iCloud:**
-- Check Settings → iCloud → iCloud Drive is enabled
-- Verify Obsidian has access to iCloud
-- Wait 1-2 minutes for sync to process
+### Morning Planning
+```
+You: Plan my day
+Claude: Good morning! Let me check your projects...
 
-**Obsidian Sync:**
-- Check sync icon in bottom-right of Obsidian
-- Click to see sync status and logs
+I found 12 tasks across 4 projects.
 
-**Git:**
-- Remember to commit and push changes:
-  ```bash
-  git add .
-  git commit -m "Update notes"
-  git push
-  ```
+How's your energy today?
+1. High - Ready for deep work
+2. Medium - Normal productivity
+3. Low - Administrative tasks only
 
----
+You: 2
 
-### Obsidian Shows Empty Vault
+Claude: And how much time do you have?
 
-**Cause:** Opened wrong folder
+You: About 4 hours of focused time
 
-**Fix:**
-1. In Obsidian: Settings → General
-2. Click "Open another vault"
-3. Navigate to correct `ObsidianVault` folder
-4. Make sure you're opening `ObsidianVault`, not the repository root
+Claude: Here's your plan for today:
 
----
+**Must Do:**
+- [ ] Review quarterly report (Project: Q4 Planning)
+- [ ] Send follow-up email to client (Project: Client Work)
 
-### Installation Issues
+**Should Do:**
+- [ ] Draft blog post outline (Area: Content)
+- [ ] Schedule dentist appointment (Area: Health)
 
-For problems with installing Git, Node.js, Claude Code, or Obsidian, see the [Setup Guide Troubleshooting](SETUP-GUIDE.md#troubleshooting) section.
+**Quick Wins (under 5 min):**
+- [ ] Reply to John's message (Relationship: John)
+
+I've saved this to Daily Plans/2025-12-11.md
+```
+
+### Proactive Capture
+```
+You: What are the best practices for API design?
+
+Claude: [Provides detailed answer about API design...]
+
+That's a valuable insight about versioning strategies.
+Would you like me to capture this to your Second Brain?
+
+You: Yes please
+
+Claude: Captured to your inbox! You can develop this into
+a permanent note during your next inbox processing.
+```
 
 ---
 
 ## Learning Path
 
 ### Week 1: Foundation
-- Run `/setup` and answer questions thoughtfully
-- Use `/capture` throughout the day
-- Run `/daily-plan` each morning
-- Get comfortable with basic capture
+- Say "Set up my second brain" and complete setup
+- Use "Capture: [thought]" throughout the day
+- Say "Plan my day" each morning
 
 ### Week 2: Build the Habit
-- Run `/daily-plan` every morning
-- Run `/daily-closeout` every evening
-- Run `/process-inbox` 3x this week (Mon/Wed/Fri)
-- Start seeing the system work for you
+- "Plan my day" every morning
+- "Daily closeout" every evening
+- "Process my inbox" on Mon/Wed/Fri
 
 ### Week 3: Refine Your Process
 - Notice patterns in what you capture
-- Adjust your daily rhythm
-- Start creating project notes in `01-Projects/`
+- Start creating project notes
 - Link related notes together
 
 ### Week 4: System Mastery
 - The workflow becomes natural
-- Customize templates if desired
-- Add more projects and areas
+- Customize to your preferences
 - The system adapts to you
 
 ---
 
-## Need Help?
+## Troubleshooting
 
-### Documentation
+### "Config not found" error
+Run setup first: Say "Set up my second brain"
 
-- **CLAUDE.md** - Complete system reference (in this folder)
-- **Skill References** - In `.claude/skills/` folders
-- **Templates** - In `ObsidianVault/Templates/`
+### Captures not appearing
+Check your vault path in `~/.second-brain/config.json`
 
-### Common Questions
+### Want to change vault location
+Say "Set up my second brain" again and provide the new path
 
-**Q: Do I need to use all the commands every day?**
-A: No! Use `/capture` anytime, `/daily-plan` in mornings, `/daily-closeout` in evenings, and `/process-inbox` 3x per week.
-
-**Q: Can I modify the system?**
-A: Yes! The templates and folder structure are yours to customize.
-
-**Q: What if I don't want to use Git/Claude/Obsidian?**
-A: This system is designed to work with all three. Individual pieces may not work alone.
-
-**Q: Is this free?**
-A: The system is free. Obsidian is free. Claude Code requires a Claude account (free tier available). Obsidian Sync is optional ($10/month).
-
-**Q: How do I backup my vault?**
-A: Use Obsidian Sync, iCloud, or Git. The vault is just markdown files - easy to backup!
-
----
-
-## What's Next?
-
-Once you're set up:
-
-1. **Run `/setup`** if you haven't already
-2. **Capture something** with `/capture`
-3. **Plan your day** with `/daily-plan`
-4. **Use it daily** for 2 weeks to build the habit
-5. **Customize** as you learn what works for you
-
-**The system gets better the more you use it!**
+### Obsidian shows empty vault
+Make sure Obsidian is pointing to the correct vault folder (the one you specified during setup)
 
 ---
 
 ## Technical Details
 
-### File Structure
+### Skill Location
 
 ```
-SecondBrain/
-├── .claude/                   # Claude Code configuration
-│   ├── commands/              # Slash commands
-│   └── skills/                # AI skills
-├── ObsidianVault/             # Your actual vault
-│   └── [all your notes]
-├── README.md                  # This file
-└── CLAUDE.md                  # System reference
+.claude/skills/second-brain/
+├── SKILL.md              # Main skill definition
+├── config/               # Configuration templates
+├── workflows/            # Setup, capture, planning, etc.
+├── references/           # GTD, PARA, Zettelkasten docs
+└── templates/            # Note templates
 ```
 
 ### How It Works
 
-1. **Claude Code** provides AI-powered commands
-2. **Commands** read/write markdown files in ObsidianVault
-3. **Obsidian** displays and links the files beautifully
-4. **You** capture, organize, and get things done!
+1. **Claude** (Code or Desktop) loads the second-brain skill
+2. **Natural language** triggers the appropriate workflow
+3. **Files** are created/updated in your Obsidian vault
+4. **Obsidian** displays and links your notes beautifully
+5. **Config** persists at `~/.second-brain/config.json`
 
 ---
 
-## License
+## FAQ
 
-This system is provided as-is for personal use. Customize freely!
+**Q: Do I need both Claude Code AND Claude Desktop?**
+A: No! Use whichever you prefer. The skill works with both.
 
-**Attribution appreciated but not required.**
+**Q: Is my data stored in the cloud?**
+A: No. Everything is stored locally in your Obsidian vault. Claude just helps you manage it.
+
+**Q: Can I use this with an existing Obsidian vault?**
+A: Yes! Setup intelligently handles existing vaults without destroying your content.
+
+**Q: What if I forget the commands?**
+A: There are no commands to memorize. Just talk naturally: "capture this", "plan my day", etc.
+
+**Q: Is this free?**
+A: The skill is free. Obsidian is free. Claude requires a subscription for extended use.
 
 ---
 
@@ -445,15 +348,17 @@ This system is provided as-is for personal use. Customize freely!
 - PARA - Tiago Forte
 
 **Built with:**
-- Claude Code (Anthropic)
+- Claude (Anthropic)
 - Obsidian (Obsidian.md)
 
 ---
 
-**Version:** 3.0
-**Last Updated:** 2025-11-01
+**Version:** 4.0
+**Last Updated:** 2025-12-11
 **Status:** Production Ready
 
-**Ready to build your Second Brain?** 🧠
+---
 
-Run `/setup` to begin!
+**Ready to build your Second Brain?**
+
+Just say: **"Set up my second brain"**
