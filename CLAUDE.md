@@ -208,6 +208,17 @@ The system provides a unified AI-powered skill with natural language triggers. J
 - Clarifies this is a draft - will be refined by daily planning in morning
 - Updates `_Context.md`
 
+#### Excalidraw Diagrams
+**Trigger phrases:** "create a diagram", "draw a flowchart", "make an excalidraw", "visualize this", "sketch this out", "diagram showing"
+**Purpose:** Create visual diagrams compatible with Obsidian Excalidraw plugin
+**When:** User wants to visualize concepts, workflows, architectures, or relationships
+**What it does:**
+- Creates `.excalidraw.md` files with proper frontmatter and JSON structure
+- Supports shapes (rectangles, ellipses, diamonds), arrows, lines, and text
+- Generates flowcharts, concept maps, system diagrams, mind maps
+- Full JSON structure with proper element properties (position, color, style)
+- See `.claude/skills/second-brain/references/excalidraw-diagrams.md` for complete format documentation
+
 ### Proactive Capture
 
 **IMPORTANT:** When researching topics or discussing ideas, Claude will offer to capture valuable insights:

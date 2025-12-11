@@ -42,6 +42,7 @@ related:
 - `reference-note` - External source summary
 - `daily-plan` - Daily planning document
 - `meeting-note` - Meeting documentation
+- `excalidraw` - Visual diagram (flowchart, concept map, etc.)
 
 ---
 
@@ -90,6 +91,7 @@ This relates to [[Time Management]] because...
 | Permanent Notes | Concept | `Context-Switching-Reduces-Focus.md` |
 | Meeting Notes | Date + Topic | `2025-12-10 - Team Sync.md` |
 | MOCs | MOC - Topic | `MOC - Productivity.md` |
+| Excalidraw | Descriptive | `System-Architecture.excalidraw.md` |
 
 ### Rules
 

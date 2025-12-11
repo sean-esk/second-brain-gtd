@@ -1,7 +1,7 @@
 ---
 name: second-brain
 description: |
-  Unified personal knowledge management system combining GTD (Getting Things Done), Zettelkasten atomic note-taking, and PARA folder organization for Obsidian vaults. Provides five core workflows: (1) Quick capture for thoughts, ideas, and tasks without categorization; (2) Inbox processing to clarify and route items using GTD principles; (3) Daily planning to select work based on energy, context, and priorities; (4) Daily closeout for reflection and tomorrow preparation; (5) Initial setup and vault configuration. Triggers on phrases like "capture this", "save this thought", "remember this", "note this down", "plan my day", "what should I work on", "process my inbox", "organize my captures", "daily closeout", "review my day", "set up my second brain", or questions about projects, tasks, priorities, and goals. Proactively offers to capture valuable insights during research and brainstorming. Designed for ADHD-friendly workflows.
+  Personal knowledge management combining GTD, Zettelkasten, and PARA for Obsidian. Six workflows: (1) Quick capture; (2) Inbox processing with GTD; (3) Daily planning by energy/context; (4) Daily closeout; (5) Setup; (6) Excalidraw diagrams. Triggers: "capture this", "remember this", "plan my day", "process my inbox", "daily closeout", "set up my second brain", "create a diagram", "visualize this". Creates flowcharts, concept maps, and visual diagrams. Proactively captures insights. ADHD-friendly design.
 ---
 
 # Second Brain
@@ -161,6 +161,22 @@ See: [Setup Workflow](workflows/setup.md)
 
 ---
 
+### 6. Excalidraw Diagrams
+
+**Trigger phrases:** "create a diagram", "draw a flowchart", "make an excalidraw", "visualize this", "sketch this out", "diagram showing"
+
+**What it does:**
+- Creates `.excalidraw.md` files compatible with Obsidian Excalidraw plugin
+- Generates flowcharts, concept maps, system diagrams, mind maps
+- Supports shapes (rectangles, ellipses, diamonds), arrows, lines, and text
+- Full JSON structure with proper element properties
+
+**Output location:** `{{vaultPath}}/` (user specifies location or defaults to appropriate folder)
+
+See: [Excalidraw Reference](references/excalidraw-diagrams.md)
+
+---
+
 ## Proactive Capture
 
 **IMPORTANT:** When you notice the user:
@@ -250,6 +266,7 @@ Use these templates when creating new notes:
 | [daily-plan.md](templates/daily-plan.md) | Daily execution plan |
 | [daily-inbox.md](templates/daily-inbox.md) | Daily capture file |
 | [user-context.md](templates/user-context.md) | User goals and preferences |
+| [excalidraw-diagram.md](templates/excalidraw-diagram.md) | Visual diagrams and flowcharts |
 
 ---
 
@@ -259,6 +276,7 @@ Use these templates when creating new notes:
 - [PARA + Zettelkasten](references/para-zettelkasten.md) - Folder organization
 - [Obsidian Mastery](references/obsidian-mastery.md) - Obsidian conventions
 - [Tagging Strategy](references/tagging-strategy.md) - Tag taxonomy
+- [Excalidraw Diagrams](references/excalidraw-diagrams.md) - Visual diagrams and flowcharts
 
 ---
 
