@@ -1,7 +1,7 @@
 ---
 name: second-brain
 description: |
-  Personal knowledge management and productivity system combining GTD, Zettelkasten, and PARA for Obsidian vaults. Use when user says: "capture this", "save this thought", "remember this", "plan my day", "what should I work on", "process my inbox", "organize my captures", "daily closeout", "review my day", "set up my second brain", or asks about projects, tasks, priorities, or goals. Proactively offer to capture valuable insights during research or brainstorming.
+  Unified personal knowledge management system combining GTD (Getting Things Done), Zettelkasten atomic note-taking, and PARA folder organization for Obsidian vaults. Provides five core workflows: (1) Quick capture for thoughts, ideas, and tasks without categorization; (2) Inbox processing to clarify and route items using GTD principles; (3) Daily planning to select work based on energy, context, and priorities; (4) Daily closeout for reflection and tomorrow preparation; (5) Initial setup and vault configuration. Triggers on phrases like "capture this", "save this thought", "remember this", "note this down", "plan my day", "what should I work on", "process my inbox", "organize my captures", "daily closeout", "review my day", "set up my second brain", or questions about projects, tasks, priorities, and goals. Proactively offers to capture valuable insights during research and brainstorming. Designed for ADHD-friendly workflows.
 ---
 
 # Second Brain
@@ -363,3 +363,18 @@ Claude Code has built-in file system access. These tools are available:
 **Important:** The skill is designed to work in BOTH environments:
 - **Configuration** is stored in Claude Memory (works everywhere)
 - **File operations** use the filesystem extension (Desktop) or built-in tools (Code)
+
+---
+
+## Version History
+
+**Version 4.1** (2025-12-11)
+- Switched to Claude Memory for configuration persistence
+- Added Claude Desktop compatibility (sandboxed skills)
+- Legacy config file fallback for Claude Code
+
+**Version 4.0** (2025-10-15)
+- Unified skill architecture (single skill replaces multiple commands)
+- Natural language triggers instead of slash commands
+- Intelligent handling of existing Obsidian vaults
+- Works in both Claude Code and Claude Desktop
