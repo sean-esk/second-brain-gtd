@@ -6,20 +6,24 @@ Interactive onboarding to configure your Second Brain system.
 
 ## Configuration Check
 
-**CRITICAL FIRST STEP:** Check for existing configuration.
+**CRITICAL FIRST STEP:** Check for existing configuration in Claude Memory.
 
-### Check for Config
+### Check Memory for Configuration
 
-1. Check if `~/.second-brain/config.json` exists
-2. Read the file if it exists
+1. Check Claude Memory for "Second Brain vault path"
+2. Check Claude Memory for "Second Brain setup complete"
 
-**If config doesn't exist OR `setupComplete` = false:**
+**If NOT found in Memory (or setup not complete):**
 - This is FIRST-TIME SETUP
 - Continue to **Step 1: Get Vault Path** below
 
-**If `setupComplete` = true:**
+**If found in Memory AND setup complete:**
 - This is RE-RUN / UPDATE
 - Continue to **FLOW B: Update Setup** below
+
+### Claude Code Fallback
+
+**For Claude Code only:** If Memory is empty, also check for legacy config at `~/.second-brain/config.json`. If found, migrate to Memory.
 
 ---
 
@@ -698,28 +702,33 @@ tags:
 
 ---
 
-## Step 10: Save Configuration
+## Step 10: Save Configuration to Memory
 
-**Create directory if needed:** `mkdir -p ~/.second-brain`
+**Save the following to Claude Memory:**
 
-**Write `~/.second-brain/config.json`:**
+Tell the user: "I'll save your Second Brain configuration to my memory so I remember it in future sessions."
 
-```json
-{
-  "vaultPath": "{{ActualVaultPath}}",
-  "setupDate": "{{YYYY-MM-DD}}",
-  "setupComplete": true,
-  "userName": "{{From Step 3}}",
-  "userContext": "Permanent Notes/Assisting-User-Context.md",
-  "preferences": {
-    "defaultCaptureType": "inbox",
-    "proactiveCapture": true,
-    "inboxThreshold": 5
-  }
-}
-```
+**What to remember:**
 
-**This marks setup as complete.**
+1. **Second Brain vault path**: `{{ActualVaultPath}}`
+2. **Second Brain user name**: `{{From Step 3}}`
+3. **Second Brain setup complete**: `true`
+4. **Second Brain setup date**: `{{YYYY-MM-DD}}`
+5. **Second Brain preferences**:
+   - Proactive capture: enabled
+   - Inbox threshold: 5 items
+
+**Example memory entries:**
+- "User's Second Brain Obsidian vault is located at /Users/sean/Documents/MyVault"
+- "User's name for Second Brain is Sean"
+- "Second Brain setup was completed on 2025-12-11"
+- "Second Brain preferences: proactive capture enabled, process inbox when 5+ items"
+
+**This marks setup as complete. Claude will remember this across all future sessions.**
+
+### Claude Code Additional Step (Optional)
+
+**For Claude Code users:** You may also write a backup config file at `~/.second-brain/config.json` for compatibility with scripts or other tools that might need it. This is optional and not required for the skill to function.
 
 ---
 
@@ -777,8 +786,10 @@ User has already completed setup and is re-running.
 
 ## Step 1: Load Existing Configuration
 
-**Read `~/.second-brain/config.json`:**
-- Extract vaultPath, setupDate, userName
+**Recall from Claude Memory:**
+- Second Brain vault path
+- Second Brain user name
+- Second Brain setup date
 
 **Read user context:** `{{vaultPath}}/Permanent Notes/Assisting-User-Context.md`
 

@@ -8,14 +8,43 @@ This file provides guidance to Claude Code when working with this Second Brain s
 
 **ALL Second Brain operations MUST work in the configured vault path.**
 
-**Configuration is stored in:** `~/.second-brain/config.json` (persistent across sessions)
+### Primary: Claude Memory (Works Everywhere)
+
+**Configuration is stored in Claude's Memory feature** and persists across all sessions automatically.
 
 **To find the vault path:**
-1. Read `~/.second-brain/config.json`
-2. Look for `vaultPath` property
-3. Use that path for ALL file operations
+1. Check Claude Memory for "Second Brain vault path"
+2. If found, use that path for ALL file operations
 
-**Example:**
+**What Claude remembers:**
+- Second Brain vault path: `/Users/yourname/Documents/MyVault`
+- Second Brain user name: `Sean`
+- Second Brain setup complete: `true`
+- Second Brain preferences: proactive capture enabled, inbox threshold 5
+
+**This means:**
+- All operations use the vault path from Memory
+- No need to specify the vault location each session
+- Works for both Claude Code AND Claude Desktop (including sandboxed skills)
+
+**NEVER hardcode vault paths in your responses.**
+
+**How to use:**
+1. At start of ANY Second Brain operation, recall the vault path from Memory
+2. Use that in all paths: `{{vaultPath}}/00-Inbox/Daily/`
+
+**If vault path NOT in Memory:**
+- User hasn't run setup yet
+- Prompt them: "Let's set up your Second Brain first. What's the path to your Obsidian vault?"
+- After getting the path, save it to Claude Memory
+- Do not proceed with other operations until setup is complete
+
+**This is configured during setup and persists forever across all sessions via Claude Memory.**
+
+### Fallback: Config File (Claude Code Only)
+
+**For Claude Code users:** If Memory is empty, you may also check for a legacy config file at `~/.second-brain/config.json`.
+
 ```json
 {
   "vaultPath": "/Users/yourname/Documents/MyVault",
@@ -30,24 +59,9 @@ This file provides guidance to Claude Code when working with this Second Brain s
 }
 ```
 
-**This means:**
-- All operations use the absolute `vaultPath` from config
-- No need to specify the vault location each session
-- Works for both Claude Code AND Claude Desktop
+**If found:** Migrate this configuration to Claude Memory for future use.
 
-**NEVER hardcode vault paths in your responses.**
-
-**How to use:**
-1. At start of ANY Second Brain operation, read `~/.second-brain/config.json`
-2. Extract `vaultPath` value
-3. Use that in all paths: `{{vaultPath}}/00-Inbox/Daily/`
-
-**If config.json doesn't exist:**
-- User hasn't run setup yet
-- Prompt them: "Let's set up your Second Brain first. What's the path to your Obsidian vault?"
-- Do not proceed with other operations
-
-**This is configured during setup and persists forever across all sessions.**
+**Note:** This fallback does NOT work in Claude Desktop (skills are sandboxed and cannot access the file system outside the vault).
 
 ---
 
@@ -353,6 +367,11 @@ type: project/area/resource/permanent-note/etc
 **For Claude Desktop:**
 The skill folder can be zipped and installed in Claude Desktop for the same functionality.
 
+**Configuration:**
+- Uses Claude Memory to persist vault path and user preferences across sessions
+- Works in both Claude Code and Claude Desktop (sandboxed skills)
+- Fallback to `~/.second-brain/config.json` in Claude Code for legacy support
+
 ---
 
 ## Templates
@@ -433,14 +452,18 @@ Commands should **adapt to the user's setup**, not impose generic structures.
 
 ## Version
 
-**System Version:** 4.0
+**System Version:** 4.1
 **Last Updated:** 2025-12-11
 **Status:** Production Ready
+
+**Changes in 4.1:**
+- **Memory-based configuration** - Uses Claude Memory instead of config file for persistence
+- Works properly in Claude Desktop sandboxed skills (no file system access required)
+- Fallback to `~/.second-brain/config.json` in Claude Code for legacy support
 
 **Changes in 4.0:**
 - Unified skill architecture (single `second-brain` skill replaces multiple skills + commands)
 - Natural language triggers instead of slash commands
-- Persistent configuration at `~/.second-brain/config.json`
 - Intelligent handling of existing Obsidian vaults during setup
 - Works for both Claude Code and Claude Desktop
 

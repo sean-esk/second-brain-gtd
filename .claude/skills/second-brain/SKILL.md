@@ -22,15 +22,17 @@ A personal knowledge management and productivity system for Obsidian, combining:
 - **Zettelkasten** - Atomic note-taking for knowledge building
 - **PARA Method** - Folder organization (Projects, Areas, Resources, Archives)
 
-## Configuration (PERSISTENT)
+## Configuration (MEMORY-BASED)
 
-**CRITICAL FIRST STEP:** Before any operation, check for configuration.
+**CRITICAL FIRST STEP:** Before any operation, check for configuration in Claude's Memory.
 
 ### How Configuration Works
 
-Configuration is stored at `~/.second-brain/config.json` and **persists across all sessions**.
+Configuration is stored in **Claude's Memory feature** and persists across all sessions automatically.
 
-Once set up, the skill remembers:
+**Why Memory?** Skills in Claude Desktop run in a sandboxed environment with no file system access. Memory is the only way to persist configuration across sessions.
+
+Once set up, Claude remembers:
 - Your vault path
 - Your name
 - Whether setup is complete
@@ -38,10 +40,19 @@ Once set up, the skill remembers:
 
 ### Configuration Check Flow
 
-1. **Check** for `~/.second-brain/config.json`
-2. **If exists and setupComplete=true**: Read vaultPath and proceed with requested action
-3. **If exists but setupComplete=false**: Continue setup workflow
-4. **If doesn't exist**: Ask for vault path, save config, run full setup
+1. **Check Claude Memory** for "Second Brain vault path"
+2. **If found in Memory**: Use the remembered vault path for all operations
+3. **If NOT found in Memory**: This is first-time setup - ask user for vault path
+
+### Checking Memory
+
+At the start of ANY Second Brain operation, check if you remember the vault path:
+
+```
+Do I have the user's Second Brain vault path in my memory?
+- If YES: Use that path for all operations
+- If NO: Ask the user and save to memory
+```
 
 ### If No Configuration Found (First Time)
 
@@ -63,33 +74,31 @@ What's the path to your vault?
 ```
 
 Once you have the path:
-1. Create `~/.second-brain/` directory: `mkdir -p ~/.second-brain`
-2. Create `config.json` with vault path and `setupComplete: false`
-3. Run the full [setup workflow](workflows/setup.md) to complete onboarding
-4. Mark `setupComplete: true` when done
+1. **Save to Claude Memory**: Remember the vault path for future sessions
+2. Run the full [setup workflow](workflows/setup.md) to complete onboarding
+3. Save setup completion status to Memory
 
-**The config file is now saved and will be remembered in all future sessions.**
+**Claude Memory persists across ALL sessions automatically.**
 
-### Config File Format
+### What Gets Saved to Memory
 
-```json
-{
-  "vaultPath": "/absolute/path/to/obsidian/vault",
-  "setupComplete": true,
-  "userName": "User Name",
-  "userContext": "Permanent Notes/Assisting-User-Context.md",
-  "preferences": {
-    "proactiveCapture": true,
-    "inboxThreshold": 5
-  }
-}
-```
+After setup, Claude should remember:
+- **Second Brain vault path**: The absolute path to the user's Obsidian vault
+- **Second Brain user name**: The user's name
+- **Second Brain setup complete**: Whether full setup has been done
+- **Second Brain preferences**: User preferences (proactive capture, inbox threshold)
 
-### If Configuration Exists
+### If Configuration Exists in Memory
 
-Read the config and use `vaultPath` for ALL file operations.
+Use the remembered `vault path` for ALL file operations.
 
-**Alternative:** Environment variable `SECOND_BRAIN_VAULT_PATH` can override config file.
+### Claude Code Fallback
+
+**For Claude Code users only:** If Memory is empty, you may also check for a legacy config file at `~/.second-brain/config.json`. If found, migrate that configuration to Memory for future use.
+
+### Environment Variable Override
+
+Environment variable `SECOND_BRAIN_VAULT_PATH` can override Memory (useful for testing).
 
 ---
 
@@ -330,6 +339,17 @@ The skill uses these tools:
 - **Write** - Create new files
 - **Edit** - Update existing files
 - **Glob** - Find files by pattern
-- **Bash** - Create directories if needed
+- **Bash** - Create directories if needed (Claude Code only)
 
-Always use the configured `vaultPath` from `~/.second-brain/config.json` for all operations.
+**Always use the vault path from Claude Memory for all operations.**
+
+### Claude Desktop vs Claude Code
+
+| Capability | Claude Desktop | Claude Code |
+|------------|----------------|-------------|
+| File operations in vault | ✅ Yes | ✅ Yes |
+| Claude Memory | ✅ Yes | ✅ Yes |
+| Write to `~/.second-brain/` | ❌ No (sandboxed) | ✅ Yes |
+| Bash commands | ❌ No | ✅ Yes |
+
+**Important:** The skill is designed to work in BOTH environments by using Memory for configuration.

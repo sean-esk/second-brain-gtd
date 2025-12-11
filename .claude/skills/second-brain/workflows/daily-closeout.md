@@ -8,14 +8,25 @@ End your day with intention by reviewing what you accomplished and preparing for
 
 ## Configuration Check
 
-**CRITICAL FIRST STEP:** Read `~/.second-brain/config.json` to get the vault path.
+**CRITICAL FIRST STEP:** Check Claude Memory for the vault path.
 
-**If config doesn't exist:**
+```
+Do I remember the user's Second Brain vault path?
+```
+
+**If found in Memory:**
+- Use the remembered vault path for all operations
+
+**If NOT found in Memory:**
 - User hasn't run setup yet
 - Respond: "Let's set up your Second Brain first."
 - Run [setup workflow](setup.md)
 
-**Extract `vaultPath` value and use it for all paths in this workflow.**
+**Use the vault path from Memory for all paths in this workflow.**
+
+### Claude Code Fallback
+
+**For Claude Code only:** If Memory is empty, also check `~/.second-brain/config.json` for legacy config.
 
 ---
 
